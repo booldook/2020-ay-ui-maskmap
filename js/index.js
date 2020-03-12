@@ -16,12 +16,28 @@ function init() {
 		if(pos) {
 			lat = pos.coords.latitude;
 			lng = pos.coords.longitude;
-			$.get(api, {lat: lat, lng: lng, m: m}, getStores);
 		}
+		else {
+			lat = 37.401127;
+			lng = 126.920475;
+		}
+		$.get(api, {lat: lat, lng: lng, m: m}, getStores);
+		var mapOption = { 
+			center: new kakao.maps.LatLng(lat, lng),
+			level: 3 
+		};
+		map = new kakao.maps.Map(mapContainer, mapOption);
+		kakao.maps.event.addListener(map, 'dragend', function() {
+			var latlng = map.getCenter(); 
+			lat = latlng.getLat();
+			lng = latlng.getLng();
+			$.get(api, {lat: lat, lng: lng, m: m}, getStores);
+		});
 	});
 }
 
 function getStores(res) {
+	console.log(res);
 	// 약국 정보 생성
 	positions = [];
 	for(var i in res.stores) {
@@ -40,11 +56,6 @@ function getStores(res) {
 }
 
 function setMap() {
-	var mapOption = { 
-		center: new kakao.maps.LatLng(lat, lng),
-		level: 3 
-	};
-	map = new kakao.maps.Map(mapContainer, mapOption);
 	for(i in positions) {
 		var imageSize = new kakao.maps.Size(40, 40); 
 		var markerImage = new kakao.maps.MarkerImage(positions[i].img, imageSize); 
@@ -56,15 +67,6 @@ function setMap() {
 		});
 	}
 }
-
-
-
-
-
-
-
-
-
 
 init();
 

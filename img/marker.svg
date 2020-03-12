@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1280px" height="800px" viewBox="0 0 1280 800" enable-background="new 0 0 1280 800" xml:space="preserve">
+<g>
+	<path fill="#FF1D25" d="M160,49h-30c-2.761,0-5,2.239-5,5v16c0,2.761,2.239,5,5,5h8.619l5.984,12.789L150.586,75H160
+		c2.761,0,5-2.239,5-5V54C165,51.239,162.761,49,160,49z"/>
+	<text transform="matrix(1 0 0 1 130.0645 66.7534)" fill="#FFFFFF" font-family="'NanumGothic'" font-size="16">부족</text>
+</g>
+<g>
+	<path fill="#7AC943" d="M110,49H80c-2.761,0-5,2.239-5,5v16c0,2.761,2.239,5,5,5h8.619l5.984,12.789L100.586,75H110
+		c2.761,0,5-2.239,5-5V54C115,51.239,112.761,49,110,49z"/>
+	<text transform="matrix(1 0 0 1 80.0645 66.7534)" fill="#FFFFFF" font-family="'NanumGothic'" font-size="16">충분</text>
+</g>
+<g>
+	<path fill="#666666" d="M161,101h-30c-2.761,0-5,2.239-5,5v16c0,2.761,2.239,5,5,5h8.619l5.984,12.789L151.586,127H161
+		c2.761,0,5-2.239,5-5v-16C166,103.239,163.761,101,161,101z"/>
+	<text transform="matrix(1 0 0 1 131.0645 118.7534)" fill="#FFFFFF" font-family="'NanumGothic'" font-size="16">없음</text>
+</g>
+<g>
+	<path fill="#FF931E" d="M108,101H78c-2.761,0-5,2.239-5,5v16c0,2.761,2.239,5,5,5h8.619l5.984,12.789L98.586,127H108
+		c2.761,0,5-2.239,5-5v-16C113,103.239,110.761,101,108,101z"/>
+	<text transform="matrix(1 0 0 1 78.0645 118.7534)" fill="#FFFFFF" font-family="'NanumGothic'" font-size="16">보통</text>
+</g>
+</svg>

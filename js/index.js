@@ -2,34 +2,28 @@
 // 4c302863cccc615af46f096f1ea543b9
 
 var api = 'https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json';
-var lat, lng, m = 1000;
+var lat, lng, m = 1000, map, positions;
+var mapContainer = document.getElementById('map');
+var img = {
+	plenty: './img/marker-green.svg', 
+	some: './img/marker-yellow.svg',
+	few: './img/marker-red.svg',
+	empty: './img/marker-grey.svg',
+};
 
 function init() {
 	navigator.geolocation.getCurrentPosition(function(pos) {
 		if(pos) {
 			lat = pos.coords.latitude;
 			lng = pos.coords.longitude;
-			$.get(api, {lat: lat, lng: lng, m: m}, setMap);
+			$.get(api, {lat: lat, lng: lng, m: m}, getStores);
 		}
 	});
 }
 
-function setMap(res) {
-	var mapContainer = document.getElementById('map'),
-		mapOption = { 
-				center: new kakao.maps.LatLng(lat, lng),
-				level: 3 
-		};
-	var map = new kakao.maps.Map(mapContainer, mapOption);
-
+function getStores(res) {
 	// 약국 정보 생성
-	var img = {
-		plenty: './img/marker-green.svg', 
-		some: './img/marker-yellow.svg',
-		few: './img/marker-red.svg',
-		empty: './img/marker-grey.svg',
-	};
-	var positions = [];
+	positions = [];
 	for(var i in res.stores) {
 		if(res.stores[i].remain_stat) {
 			positions.push({
@@ -42,7 +36,15 @@ function setMap(res) {
 			});
 		}
 	}
-	console.log(positions);
+	setMap(); 
+}
+
+function setMap() {
+	var mapOption = { 
+		center: new kakao.maps.LatLng(lat, lng),
+		level: 3 
+	};
+	map = new kakao.maps.Map(mapContainer, mapOption);
 	for(i in positions) {
 		var imageSize = new kakao.maps.Size(40, 40); 
 		var markerImage = new kakao.maps.MarkerImage(positions[i].img, imageSize); 
@@ -52,7 +54,7 @@ function setMap(res) {
 				title : positions[i].title,
 				image : markerImage
 		});
-	} 
+	}
 }
 
 

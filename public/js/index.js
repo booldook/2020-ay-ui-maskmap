@@ -85,4 +85,61 @@ function setMap() {
 	}
 }
 
+
+
+$( function() {
+	var availableTags = [
+		"ActionScript",
+		"AppleScript",
+		"Asp",
+		"BASIC",
+		"C",
+		"C++",
+		"Clojure",
+		"COBOL",
+		"ColdFusion",
+		"Erlang",
+		"Fortran",
+		"Groovy",
+		"Haskell",
+		"Java",
+		"JavaScript",
+		"Lisp",
+		"Perl",
+		"PHP",
+		"Python",
+		"Ruby",
+		"Scala",
+		"Scheme"
+	];
+	$( "#addr" ).autocomplete({
+		source: availableTags
+	});
+} );
+
+// https://dapi.kakao.com/v2/local/search/address.json?query=안양동
+// Authorization KakaoAK acc78d4ce0832806a32cb2a10b5f2c28
+// Content-Type application/json
+
+$.ajax({
+	url: 'https://dapi.kakao.com/v2/local/search/address.json',
+	type: 'GET',
+	dataType: 'json',
+	data: {query: "서초동"},
+	beforeSend: function(xhr) {
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.setRequestHeader('Authorization', 'KakaoAK acc78d4ce0832806a32cb2a10b5f2c28');
+	},
+	success: function(res) {
+		console.log(res);
+	},
+	error: function(xhr, status) {
+		console.log(xhr);
+	}
+})
+
+
+
+
+
 init();

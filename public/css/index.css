@@ -4,6 +4,10 @@
 .subject > :nth-child(2) {width: 11vw;}
 .description {text-align: center; font-size:5vw; color: #b4edff; display: flex; justify-content: center; align-items: center; margin-top: 2rem;}
 .description > div {font-size: 6vw; color: #ff5858; font-weight: bold;}
+.search-wrap {width: 40%; margin-top: 2rem;}
+.search-wrap input {font-size: 2rem;}
+.ui-menu.ui-widget {z-index: 1000; font-size: 1.5rem;}
+.ui-menu-item {padding: 0.25rem;}
 
 /* Responsive */
 @media screen and (max-width: 992px) {

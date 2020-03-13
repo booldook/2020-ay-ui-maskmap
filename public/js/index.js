@@ -73,6 +73,7 @@ function getStores(res) {
 }
 
 function setMap() {
+	console.log(positions);
 	for(i in positions) {
 		var imageSize = new kakao.maps.Size(40, 40); 
 		var markerImage = new kakao.maps.MarkerImage(positions[i].img, imageSize); 
@@ -86,57 +87,43 @@ function setMap() {
 }
 
 
+$("#addr").autocomplete({
+	source: getAddr,
+	select: function(evt, ui) {
+		$(".main-wrap").hide();
+		map.setCenter(new kakao.maps.LatLng(ui.item.lat, ui.item.lng));
+		$.get(api, {lat: ui.item.lat, lng: ui.item.lng, m: meter[3]}, getStores);
+	},
+	minLength: 2
+});
 
-$( function() {
-	var availableTags = [
-		"ActionScript",
-		"AppleScript",
-		"Asp",
-		"BASIC",
-		"C",
-		"C++",
-		"Clojure",
-		"COBOL",
-		"ColdFusion",
-		"Erlang",
-		"Fortran",
-		"Groovy",
-		"Haskell",
-		"Java",
-		"JavaScript",
-		"Lisp",
-		"Perl",
-		"PHP",
-		"Python",
-		"Ruby",
-		"Scala",
-		"Scheme"
-	];
-	$( "#addr" ).autocomplete({
-		source: availableTags
+function getAddr(req, res) {
+	$.ajax({
+		url: 'https://dapi.kakao.com/v2/local/search/address.json',
+		type: 'GET',
+		dataType: 'json',
+		data: {query: req.term},
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.setRequestHeader('Authorization', 'KakaoAK acc78d4ce0832806a32cb2a10b5f2c28');
+		},
+		success: function(result) {
+			console.log(result.documents);
+			res(
+				result.documents.map(function(v) {
+					return {
+						lat: v.y,
+						lng: v.x,
+						value: v.address_name
+					}
+				})
+			);
+		},
+		error: function(xhr, status) {
+			console.log(xhr);
+		}
 	});
-} );
-
-// https://dapi.kakao.com/v2/local/search/address.json?query=안양동
-// Authorization KakaoAK acc78d4ce0832806a32cb2a10b5f2c28
-// Content-Type application/json
-
-$.ajax({
-	url: 'https://dapi.kakao.com/v2/local/search/address.json',
-	type: 'GET',
-	dataType: 'json',
-	data: {query: "서초동"},
-	beforeSend: function(xhr) {
-		xhr.setRequestHeader('Content-Type', 'application/json');
-		xhr.setRequestHeader('Authorization', 'KakaoAK acc78d4ce0832806a32cb2a10b5f2c28');
-	},
-	success: function(res) {
-		console.log(res);
-	},
-	error: function(xhr, status) {
-		console.log(xhr);
-	}
-})
+}
 
 
 

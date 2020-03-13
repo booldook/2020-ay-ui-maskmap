@@ -54,7 +54,7 @@ function init() {
 }
 
 function getStores(res) {
-	console.log(res);
+	// console.log(res);
 	// 약국 정보 생성
 	positions = [];
 	for(var i in res.stores) {
@@ -73,7 +73,7 @@ function getStores(res) {
 }
 
 function setMap() {
-	console.log(positions);
+	// console.log(positions);
 	for(i in positions) {
 		var imageSize = new kakao.maps.Size(40, 40); 
 		var markerImage = new kakao.maps.MarkerImage(positions[i].img, imageSize); 
@@ -108,7 +108,7 @@ function getAddr(req, res) {
 			xhr.setRequestHeader('Authorization', 'KakaoAK acc78d4ce0832806a32cb2a10b5f2c28');
 		},
 		success: function(result) {
-			console.log(result.documents);
+			// console.log(result.documents);
 			res(
 				result.documents.map(function(v) {
 					return {
@@ -125,7 +125,16 @@ function getAddr(req, res) {
 	});
 }
 
+$(".bt-this").click(function(){
+	$(".main-wrap").hide();
+	map.setCenter(new kakao.maps.LatLng(lat, lng));
+	$.get(api, {lat: lat, lng: lng, m: meter[3]}, getStores);
+});
 
+$(".bt-search").click(function(){
+	$(".main-wrap").show();
+	$("#addr").val('');
+});
 
 
 

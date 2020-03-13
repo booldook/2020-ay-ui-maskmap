@@ -1,13 +1,15 @@
 .map-wrap {width: 100%; height: 100vh;}
 .main-wrap {width: 100%; height: 100vh; position: absolute; background-color: rgba(0,0,0,0.8); top: 0; left: 0; z-index: 999; text-align: center; padding-top: 10vh;}
 .subject {font-size: 12vw; display: flex; justify-content: center; align-items: center; color: #53d7ff;}
-.subject > :nth-child(2) {width: 11vw;}
-.description {text-align: center; font-size:5vw; color: #b4edff; display: flex; justify-content: center; align-items: center; margin-top: 2rem;}
+.subject > :nth-child(2) {width: 12vw;}
+.description {text-align: center; font-size:5vw; color: #b4edff; display: flex; justify-content: center; align-items: center; margin: 2rem 0;}
 .description > div {font-size: 6vw; color: #ff5858; font-weight: bold;}
 .search-wrap {width: 40%; margin: 2rem auto 0 auto;}
 .search-wrap input {font-size: 2rem;}
 .ui-menu.ui-widget {z-index: 1000; font-size: 1.5rem;}
 .ui-menu-item {padding: 0.25rem;}
+
+.bt-search {position: absolute; right: 1rem; top: 1rem; z-index: 998;}
 
 /* Responsive */
 @media screen and (max-width: 992px) {
@@ -15,7 +17,14 @@
 }
 
 @media screen and (max-width: 768px) {
-
+	.main-wrap {padding-top: 15vh;}
+	.subject {font-size: 16vw; font-weight: bold;}
+	.subject > :nth-child(2) {width: 16vw;}
+	.description {font-size:7vw;}
+	.description > div {font-size: 8vw;}
+	.search-wrap {width: 80%;}
+	.search-wrap input {font-size: 1.5rem;}
+	.ui-menu.ui-widget {font-size: 1rem;}
 }
 
 @media screen and (max-width: 575px) {

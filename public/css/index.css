@@ -1,5 +1,9 @@
 .map-wrap {width: 100%; height: 100vh;}
-
+.main-wrap {width: 100%; height: 100vh; position: absolute; background-color: rgba(0,0,0,0.8); top: 0; left: 0; z-index: 999; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.subject {font-size: 12vw; display: flex; justify-content: center; align-items: center; color: #53d7ff;}
+.subject > :nth-child(2) {width: 11vw;}
+.description {text-align: center; font-size:5vw; color: #b4edff; display: flex; justify-content: center; align-items: center; margin-top: 2rem;}
+.description > div {font-size: 6vw; color: #ff5858; font-weight: bold;}
 
 /* Responsive */
 @media screen and (max-width: 992px) {
